@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PlatformService.Data;
+using PlatformService.SyncDataServices.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ services.AddDbContext<AppDbContext>(opt =>
 opt.UseInMemoryDatabase("InMem"));
 
 services.AddScoped<IPlatformRepository, PlatformRepository>();
+
+services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
