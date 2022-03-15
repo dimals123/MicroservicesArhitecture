@@ -6,15 +6,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: commandsservice
+      app: commandservice
   template:
     metadata:
       labels:
-        app: commandsservice
+        app: commandservice
     spec:
       containers:
-      - name: commandsservice
-        image: dimals11/commandsservice:latest
+      - name: commandservice
+        image: dimals11/commandservice:latest
 ---
 apiVersion: v1
 kind: Service
@@ -23,9 +23,9 @@ metadata:
 spec: 
  type: ClusterIP
  selector:
-  app: commandsservice
+  app: commandservice
  ports:
- - name: commandsservice
+ - name: commandservice
    protocol: TCP
    port: 80
    targetPort: 80
