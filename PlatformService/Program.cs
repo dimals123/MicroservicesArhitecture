@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PlatformService.AsyncDataServices;
 using PlatformService.Data;
 using PlatformService.SyncDataServices.Http;
 
@@ -25,6 +26,7 @@ else
 services.AddScoped<IPlatformRepository, PlatformRepository>();
 
 services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+services.AddSingleton<IMessageBusClient, MessageBusClient>();
 
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddControllers();
